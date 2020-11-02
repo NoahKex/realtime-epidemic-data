@@ -6,8 +6,13 @@
       <p class="title">新冠疫情实时数据</p>
     </div>
     <div class="rightHeader">
-      <p class="text">数据来源：丁香园·丁香医生</p>
-      <p class="text">最后更新时间：<span style="color:#93d5dc;">{{nowTime}}</span></p>
+      <div class="leftBox">
+        <p class="text">数据来源：丁香园·丁香医生</p>
+        <p class="text">最后更新时间：<span style="color:#93d5dc;">{{nowTime}}</span></p>
+      </div>
+      <div class="rightBox">
+        <img @click="toGitHub()" src="@/assets/icon/GitHub.png" alt="" class="img">
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +28,9 @@
     computed: {},
     watch: {},
     methods: {
-      
+      toGitHub(){
+        window.location.href="https://github.com/NoahKex/realtime-epidemic-data";
+      }
     },
     created() {
     },
@@ -43,6 +50,7 @@
   }
 </script>
 <style lang='less' scoped>
+  @width:300px;
   .header{
     height: 100%;
     background-color: #3067D4;
@@ -52,7 +60,7 @@
     justify-content: space-between;
     .leftHeader{
       height: 100%;
-      width: 300px;
+      width: @width;
       background-color: #3570E0;
       display: flex;
       align-items: center;
@@ -73,17 +81,36 @@
     }
     .rightHeader{
       height: 100%;
-      width: 18%;
+      width: calc(100vw - @width);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      .text{
-        height: 0.26rem;
-        width: 100%;
-        line-height: 0.26rem;
-        font-size: 0.07rem;
-        color: #8abcd1;
+      .leftBox{
+        height: 100%;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 45px;
+        .text{
+          height: 0.26rem;
+          width: 100%;
+          line-height: 0.26rem;
+          font-size: 0.07rem;
+          color: #8abcd1;
+        }
+      }
+      .rightBox{
+        height: 100%;
+        width: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .img{
+          height: 35px;
+          width: 35px;
+        }
       }
     }
   }
