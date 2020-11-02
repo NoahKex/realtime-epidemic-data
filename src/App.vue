@@ -1,32 +1,69 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <el-container class="container">
+      <el-header>
+        <Header></Header>
+      </el-header>
+      <el-container>
+        <el-aside>
+          <Aside></Aside>
+        </el-aside>
+        <el-container>
+          <el-main>
+            <keep-alive><router-view/></keep-alive>
+          </el-main>
+          <el-footer>
+            <Footer></Footer>
+          </el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import Header from '@/components/home/Header';
+import Aside from '@/components/home/Aside';
+import Footer from '@/components/home/Footer';
+export default {
+  components:{
+    Header,
+    Aside,
+    Footer
   }
+}
+</script>
+
+<style lang="less">
+@import './less/media.less';
+*{
+  margin: 0;
+  padding: 0;
+}
+#app {
+  height: 100vh;
+}
+.el-header{
+  padding: 0;
+  min-width: 1200px;
+}
+.el-aside{
+  box-shadow: 1px 0 5px 0 #ededf5;
+  transform: translate3d(0, 0, 0);
+}
+.el-main{
+  min-width: 880px;
+}
+.el-footer{
+  height: 50px !important;
+  padding: 0;
+  min-width: 880px;
+  overflow: hidden;
+}
+.container{
+  height: 100%;
+}
+.el-menu{
+  border: none;
 }
 </style>
